@@ -14,6 +14,7 @@ const REACT_PROJECTS = [
 ];
 
 const UIUX_PROJECTS = [
+  { name: "UI/UX Case Study", icon: "📐", desc: "End-to-end case study — research, wireframes, to final UI", link: "https://vids165.github.io/ui-ux-case-study/" },
   { name: "Studify", icon: "📚", desc: "Study companion app with focus modes", link: "https://www.figma.com/design/IBN9BnQXP2NIxllkBfG5DQ/Studify?m=auto&t=jyeoFZqiy5QdObKt-6" },
   { name: "InternTrack", icon: "🗂️", desc: "Internship tracking platform UI", link: "https://www.figma.com/design/wHINJMK1fGThYxLf8iJtiS/Untitled?m=auto&t=jyeoFZqiy5QdObKt-6" },
   { name: "Shopera", icon: "🛍️", desc: "Modern e-commerce shopping experience", link: "https://www.figma.com/design/VSVwswTPgriRq8nmj17708/Shopera?m=auto&t=jyeoFZqiy5QdObKt-6" },
@@ -127,7 +128,7 @@ export default function Portfolio() {
   const [roleIndex, setRoleIndex] = useState(0);
   const sectionRefs = useRef({});
 
-  const roles = ["UI/UX Designer", "Graphic Designer", "Front-End Developer"];
+  const roles = ["UI/UX Designer | Figma • React • User-Centered Design", "Designing simple digital experiences that solve real problems", "Front-End Developer who codes what she designs"];
 
   useEffect(() => {
     // Force full-screen body/html
@@ -172,7 +173,7 @@ export default function Portfolio() {
     if (!formData.name || !formData.email || !formData.message) return;
     const subject = encodeURIComponent(formData.subject || "Portfolio Contact");
     const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`);
-    window.open(`mailto:vidhiapatel2005@gmail.com?subject=${subject}&body=${body}`);
+    window.location.href = `mailto:vidhiapatel2005@gmail.com?subject=${subject}&body=${body}`;
     setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);
@@ -266,8 +267,10 @@ export default function Portfolio() {
               <span key={roleIndex} style={styles.roleText}>{roles[roleIndex]}</span>
             </div>
             <p style={styles.heroDesc}>
-              I blend aesthetics with functionality — crafting interfaces that feel as good as they look,
-              and building the code that brings them to life.
+              I'm a Computer Science &amp; Design student who gets genuinely excited about turning messy problems
+              into interfaces that feel obvious. I love products that respect people's time — clean dashboards,
+              calm onboarding, tools that just work — and I design and code them end-to-end, from Figma wireframe
+              to working React component.
             </p>
             <div style={styles.heroActions}>
               <button className="btn-primary" style={styles.btnPrimary} onClick={() => scrollTo("Projects")}>View Projects</button>
@@ -289,6 +292,41 @@ export default function Portfolio() {
           </div>
         </div>
         <div style={styles.scrollHint}>↓ Scroll to explore</div>
+      </section>
+
+      {/* WHY DESIGN / PERSONALITY */}
+      <section style={{ ...styles.section, paddingTop: 60, paddingBottom: 60 }}>
+        <div style={styles.sectionInner}>
+          <div style={styles.sectionLabel}>— A Little About Me</div>
+          <h2 style={styles.sectionTitle}>Why Design?</h2>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 24, marginTop: 8 }}>
+            <div style={styles.eduCard}>
+              <div style={styles.eduIconWrap}><span style={styles.eduIcon}>💡</span></div>
+              <div style={styles.eduLevel}>Why design</div>
+              <div style={styles.eduInstitute}>
+                I started out writing code, and kept noticing that great products fail for one reason: people
+                give up before they understand them. Design is how I fix that — it's the part of building
+                something that decides whether anyone actually wants to use it.
+              </div>
+            </div>
+            <div style={styles.eduCard}>
+              <div style={styles.eduIconWrap}><span style={styles.eduIcon}>✨</span></div>
+              <div style={styles.eduLevel}>What excites me</div>
+              <div style={styles.eduInstitute}>
+                Taking a confusing flow and making it feel inevitable. Hackathons, tight deadlines, and the
+                moment a prototype finally "clicks" for a user — that's the part of the job I look forward to most.
+              </div>
+            </div>
+            <div style={styles.eduCard}>
+              <div style={styles.eduIconWrap}><span style={styles.eduIcon}>🛒</span></div>
+              <div style={styles.eduLevel}>Products I love</div>
+              <div style={styles.eduInstitute}>
+                Tools that get out of their own way — productivity apps, clean e-commerce flows, and anything
+                that makes a small task feel effortless instead of like work.
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* EDUCATION */}
